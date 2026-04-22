@@ -14,4 +14,4 @@ An AutoHotkey v2 script for Path of Exile that calculates the Disenchant (Dust) 
 4. Left-click or Right-click to dismiss the overlay.
 
 ## Credits
-Data sourced from [poedb.tw](https://poedb.tw/us/Kingsmarch).
+- Use dust data from [poedb.tw](https://poedb.tw/us/Kingsmarch#Disenchant).
