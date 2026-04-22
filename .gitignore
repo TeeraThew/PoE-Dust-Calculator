@@ -2,7 +2,7 @@
 data/*
 logs/*
 
-# But keep the folders themselves (by not ignoring .gitkeep files)
+# Keep the folders themselves (by not ignoring .gitkeep files)
 !data/.gitkeep
 !logs/.gitkeep
 
