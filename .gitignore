@@ -1,0 +1,7 @@
+# Ignore data and logs
+dust_values.data
+dust_log.txt
+dust_meta.ini
+
+# Ignore temporary files
+*.tmp
