@@ -1,3 +1,11 @@
+/*
+PoE Kingsmarch Dust Calculator
+Copyright (c) 2026 TeeraThew
+
+This software is released under the MIT License.
+https://opensource.org/licenses/MIT
+*/
+
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 

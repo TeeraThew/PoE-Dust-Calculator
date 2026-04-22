@@ -1,7 +1,10 @@
-# Ignore data and logs
-dust_values.data
-dust_log.txt
-dust_meta.ini
+# Ignore everything inside the data and logs folders
+data/*
+logs/*
 
-# Ignore temporary files
-*.tmp
+# But keep the folders themselves (by not ignoring .gitkeep files)
+!data/.gitkeep
+!logs/.gitkeep
+
+# Ignore compiled executables if you prefer people to build their own
+dist/*.exe
