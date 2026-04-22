@@ -15,11 +15,11 @@ https://opensource.org/licenses/MIT
 UPDATE_INTERVAL_HOURS := 24
 MIN_EXPECTED_ROWS := 100
 
-; A_ScriptDir is "...\PoE-Dust-Calculator\src"
-; We go one level up to get the Project Root
-PROJECT_ROOT := RegExReplace(A_ScriptDir, "\\[^\\]+$") 
+; GLOBAL GUI TRACKER
+global DustGuiObj := 0
 
-; Define folders
+; Path Setup
+SplitPath(A_ScriptDir, , &PROJECT_ROOT) ; Extracts the parent folder of the script
 DATA_DIR := PROJECT_ROOT "\data"
 LOG_DIR  := PROJECT_ROOT "\logs" ; Optional: Separate logs folder
 
@@ -287,9 +287,6 @@ FormatNumber(num) {
 ; GUI 
 ; =========================
 
-; GLOBAL GUI TRACKER
-global DustGuiObj := 0
-
 ; =========================
 ; GUI FUNCTION
 ; =========================
@@ -383,7 +380,8 @@ CloseDustGui() {
 ; =========================
 ; CLICK TO CLOSE
 ; =========================
-#HotIf DustGuiObj 
+; We check if the variable is set AND if it contains a value other than 0
+#HotIf IsSet(DustGuiObj) && DustGuiObj 
 ~LButton::
 ~RButton:: {
     CloseDustGui()
