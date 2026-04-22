@@ -4,9 +4,8 @@ An AutoHotkey v2 script for Path of Exile that calculates the Disenchant (Dust) 
 
 ## Features
 - Scrapes the latest data from PoeDB.
-- Calculates values based on item level scaling.
+- Calculates dust values based on item level scaling.
 - Factors in Quality, Influence, and Corrupted Implicits.
-- Dynamic overlay that follows the mouse.
 
 ## How to use
 1. Install [AutoHotkey v2](https://www.autohotkey.com/).
