@@ -15,9 +15,21 @@ https://opensource.org/licenses/MIT
 UPDATE_INTERVAL_HOURS := 24
 MIN_EXPECTED_ROWS := 100
 
-FilePATH := A_ScriptDir "\dust_values.data"
-MetaPATH := A_ScriptDir "\dust_meta.ini"
-LogPATH  := A_ScriptDir "\dust_log.txt"
+; A_ScriptDir is "...\PoE-Dust-Calculator\src"
+; We go one level up to get the Project Root
+PROJECT_ROOT := RegExReplace(A_ScriptDir, "\\[^\\]+$") 
+
+; Define folders
+DATA_DIR := PROJECT_ROOT "\data"
+LOG_DIR  := PROJECT_ROOT "\logs" ; Optional: Separate logs folder
+
+; Create folders if they don't exist
+if !DirExist(DATA_DIR)
+    DirCreate(DATA_DIR)
+
+FilePATH := DATA_DIR "\dust_values.data"
+MetaPATH := DATA_DIR "\dust_meta.ini"
+LogPATH  := DATA_DIR "\dust_log.txt"
 
 LogMsg(msg) {
     try FileAppend(FormatTime(A_Now, "yyyy-MM-dd HH:mm:ss") " - " msg "`n", LogPATH, "UTF-8")
