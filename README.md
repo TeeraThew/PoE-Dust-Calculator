@@ -2,8 +2,8 @@
 
 An AutoHotkey v2 tool for Path of Exile that calculates the Disenchant (Dust) value of unique items.
 
-![License](https://img.shields.io/github/license/TeeraThew/PoE-Dust-Calculator)
-![Latest Release](https://img.shields.io/github/v/release/TeeraThew/PoE-Dust-Calculator)
+[![License](https://img.shields.io/github/license/TeeraThew/PoE-Dust-Calculator?label=License)](LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/TeeraThew/PoE-Dust-Calculator?label=Latest%20Release)](https://github.com/TeeraThew/PoE-Dust-Calculator/releases/latest)
 
 ## 🌟 Features
 - **Data Scraping:** Automatically fetches and updates the latest base dust values from [PoEDB](https://poedb.tw/us/Kingsmarch#Disenchant).
@@ -38,7 +38,10 @@ An AutoHotkey v2 tool for Path of Exile that calculates the Disenchant (Dust) va
 ## 📊 Dust Calculation
 The total dust is calculated as: 
 
-`TotalDust = Floor(BaseDust * LevelMultiplier * BonusFactor)`
+$$
+\text{TotalDust} = \text{Floor}(\text{BaseDust} \times \text{LevelMultiplier} \times \text{BonusFactor})
+$$
+
 - **Base Dust Value:** Base dust value for each unique item from [PoEDB](https://poedb.tw/us/Kingsmarch#Disenchant).
 - **Item Level:** Multiplies the base dust value by the item level scaling factor.
 - **Quality Bonus:** +2% per 1% Quality (40% at Q20).
@@ -46,7 +49,7 @@ The total dust is calculated as:
 - **Corruption Bonus:** +50% per Corrupted Implicit modifier.
 
 ## 📜 Credits
-- Dust data sourced from [poedb.tw](https://poedb.tw/us/Kingsmarch#Disenchant).
+- Dust data sourced from [PoEDB](https://poedb.tw/us/Kingsmarch#Disenchant).
 - Developed with [AutoHotkey v2](https://www.autohotkey.com/).
 
 ## ⚖️ License
