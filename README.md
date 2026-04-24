@@ -39,7 +39,7 @@ An AutoHotkey v2 tool for Path of Exile that calculates the Disenchant (Dust) va
 The total dust is calculated as: 
 
 $$
-\text{TotalDust} = \text{Floor}(\text{BaseDust} \times \text{LevelMultiplier} \times \text{BonusFactor})
+\large \text{TotalDust} = \text{Floor}(\text{BaseDust} \times \text{LevelMultiplier} \times \text{BonusFactor})
 $$
 
 - **Base Dust Value:** Base dust value for each unique item from [PoEDB](https://poedb.tw/us/Kingsmarch#Disenchant).
