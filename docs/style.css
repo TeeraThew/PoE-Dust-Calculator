@@ -1,97 +1,166 @@
 /* =========================
-   BASE
-========================= */
+   ROOT VARIABLES (Design System)
+   ========================= */
+:root {
+  /* Spacing scale (GitHub-like) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+
+  /* Colors */
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --muted: #8b949e;
+  --accent: #58a6ff;
+
+  /* Buttons */
+  --green: #238636;
+  --green-hover: #2ea043;
+  --blue: #1f6feb;
+  --blue-hover: #388bfd;
+}
+
+/* =========================
+   GLOBAL
+   ========================= */
 body {
   font-family: Arial, sans-serif;
-  background: #0d1117;
-  color: #c9d1d9;
+  background: var(--bg);
+  color: var(--text);
   margin: 0;
+  line-height: 1.6;
 }
 
 /* =========================
    LAYOUT
-========================= */
+   ========================= */
 .container {
   max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
 }
 
 /* =========================
    TYPOGRAPHY
-========================= */
+   ========================= */
 h1 {
-  color: #58a6ff;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  margin-bottom: 10px;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
 }
 
 .subtitle {
-  color: #8b949e;
-  margin-bottom: 20px;
-  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  color: var(--muted);
+  margin-bottom: var(--space-4);
 }
 
 .release {
-  margin-bottom: 15px;
-  color: #8b949e;
+  margin-bottom: var(--space-3);
+  color: var(--muted);
 }
 
 /* =========================
    BUTTONS
-========================= */
+   ========================= */
 .buttons {
-  margin: 20px 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
 }
 
 .btn {
   flex: 1;
   min-width: 140px;
+
+  padding: var(--space-3) var(--space-4);
   text-align: center;
-
-  padding: 12px;
   text-decoration: none;
+
   border-radius: 6px;
-  border: 1px solid #000000;
+  border: 1px solid var(--border);
   color: white;
-  transition: opacity 0.15s ease;
+
+  transition: all 0.15s ease;
 }
 
+/* Primary (Download) */
 .btn-primary {
-  background: #238636;
+  background: var(--green);
+  border-color: var(--green);
 }
 
+.btn-primary:hover {
+  background: var(--green-hover);
+}
+
+/* Secondary (View Source / GitHub) */
 .btn-secondary {
-  background: #1f6feb;
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.btn-secondary:hover {
+  background: var(--blue-hover);
+}
+
+/* Outline (optional) */
+.btn-outline {
+  background: transparent;
+  border-color: var(--border);
 }
 
 .btn:hover {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* =========================
-   README
-========================= */
+   README CONTAINER
+   ========================= */
 .readme {
-  background: #161b22;
-  padding: 20px;
+  background: var(--surface);
+  padding: var(--space-5);
   border-radius: 8px;
-  margin-top: 20px;
-
-  overflow-x: auto;
-  word-wrap: break-word;
+  margin-top: var(--space-5);
+  border: 1px solid var(--border);
 }
 
 .readme.loading {
-  color: #8b949e;
+  color: var(--muted);
 }
 
-/* README links */
+/* =========================
+   README CONTENT
+   ========================= */
+.readme h1,
+.readme h2,
+.readme h3 {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+}
+
+.readme p {
+  margin-bottom: var(--space-3);
+}
+
+.readme ul,
+.readme ol {
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-5);
+}
+
+.readme li {
+  margin-bottom: var(--space-2);
+}
+
+/* Links */
 .readme a {
-  color: #58a6ff;
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -104,22 +173,59 @@ h1 {
 }
 
 /* Code blocks */
-.readme pre {
-  overflow-x: auto;
-  padding: 12px;
-  border-radius: 6px;
-  background: #0d1117;
-  font-size: 13px;
-}
-
 .readme code {
+  background: #161b22;
+  padding: 2px 6px;
+  border-radius: 4px;
   font-family: monospace;
+  border: 1px solid var(--border);
 }
 
-/* Math spacing (KaTeX) */
+.readme pre {
+  background: #161b22;
+  padding: var(--space-4);
+  border-radius: 6px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  margin-bottom: var(--space-4);
+}
+
+.readme pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* =========================
+   MATH (KaTeX)
+   ========================= */
 .katex-display {
-    margin: 1.5rem 0;
-    overflow-x: auto;
-    overflow-y: hidden;
+  margin: var(--space-5) 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
+@media (max-width: 600px) {
+  .container {
+    padding: var(--space-5) var(--space-3);
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .readme {
+    padding: var(--space-4);
+  }
+
+  .katex-display {
+    font-size: 0.9em;
+  }
+}
