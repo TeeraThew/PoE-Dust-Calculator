@@ -53,4 +53,4 @@ $$
 - Developed with [AutoHotkey v2](https://www.autohotkey.com/).
 
 ## ⚖️ License
-This project is licensed under the [MIT License](LICENSE)
+This project is licensed under the [MIT License](https://github.com/TeeraThew/PoE-Dust-Calculator/blob/main/LICENSE)
