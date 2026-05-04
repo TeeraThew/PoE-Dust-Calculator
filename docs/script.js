@@ -51,6 +51,21 @@ async function loadReadme() {
     readmeEl.classList.remove("loading");
     readmeEl.innerHTML = marked.parse(md);
 
+    // 👉 NEW: render LaTeX
+    renderMathInElement(readmeEl, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+
+    readmeEl.querySelectorAll("a").forEach(a => {
+    if (a.href.startsWith("http")) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+    }
+    });
+
   } catch (err) {
     readmeEl.classList.remove("loading");
     readmeEl.innerHTML = `
