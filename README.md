@@ -2,7 +2,7 @@
 
 An AutoHotkey v2 tool that provides an in-game overlay for Path of Exile to calculate and display the Disenchant (Dust) value of unique items.
 
-[![License](https://img.shields.io/github/license/TeeraThew/PoE-Dust-Calculator?label=License)](LICENSE)
+[![License](https://img.shields.io/github/license/TeeraThew/PoE-Dust-Calculator?label=License)](https://github.com/TeeraThew/PoE-Dust-Calculator/blob/main/LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/TeeraThew/PoE-Dust-Calculator?label=Latest%20Release)](https://github.com/TeeraThew/PoE-Dust-Calculator/releases/latest)
 
 ## 🌟 Features
