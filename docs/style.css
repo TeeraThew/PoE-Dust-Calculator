@@ -1,3 +1,6 @@
+/* =========================
+   BASE
+========================= */
 body {
   font-family: Arial, sans-serif;
   background: #0d1117;
@@ -5,19 +8,28 @@ body {
   margin: 0;
 }
 
+/* =========================
+   LAYOUT
+========================= */
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 40px;
+  padding: 20px;
 }
 
+/* =========================
+   TYPOGRAPHY
+========================= */
 h1 {
   color: #58a6ff;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin-bottom: 10px;
 }
 
 .subtitle {
   color: #8b949e;
   margin-bottom: 20px;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
 }
 
 .release {
@@ -25,33 +37,52 @@ h1 {
   color: #8b949e;
 }
 
+/* =========================
+   BUTTONS
+========================= */
 .buttons {
   margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .btn {
-  display: inline-block;
-  padding: 10px 18px;
-  margin-right: 10px;
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+
+  padding: 12px;
   text-decoration: none;
   border-radius: 6px;
-  border: 1px solid #30363d;
+  border: 1px solid #000000;
   color: white;
+  transition: opacity 0.15s ease;
 }
 
-.btn.primary {
+.btn-primary {
   background: #238636;
+}
+
+.btn-secondary {
+  background: #1f6feb;
 }
 
 .btn:hover {
   opacity: 0.85;
 }
 
+/* =========================
+   README
+========================= */
 .readme {
   background: #161b22;
   padding: 20px;
   border-radius: 8px;
   margin-top: 20px;
+
+  overflow-x: auto;
+  word-wrap: break-word;
 }
 
 .readme.loading {
@@ -60,7 +91,7 @@ h1 {
 
 /* README links */
 .readme a {
-  color: #58a6ff; /* GitHub blue */
+  color: #58a6ff;
   text-decoration: none;
 }
 
@@ -71,3 +102,24 @@ h1 {
 .readme a:visited {
   color: #8ab4f8;
 }
+
+/* Code blocks */
+.readme pre {
+  overflow-x: auto;
+  padding: 12px;
+  border-radius: 6px;
+  background: #0d1117;
+  font-size: 13px;
+}
+
+.readme code {
+  font-family: monospace;
+}
+
+/* Math spacing (KaTeX) */
+.katex-display {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
