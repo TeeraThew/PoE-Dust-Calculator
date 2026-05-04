@@ -1,6 +1,6 @@
 # PoE Kingsmarch Dust Calculator
 
-An AutoHotkey v2 tool for Path of Exile that calculates the Disenchant (Dust) value of unique items.
+An AutoHotkey v2 tool that provides an in-game overlay for Path of Exile to calculate and display the Disenchant (Dust) value of unique items.
 
 [![License](https://img.shields.io/github/license/TeeraThew/PoE-Dust-Calculator?label=License)](LICENSE)
 [![Latest Release](https://img.shields.io/github/v/release/TeeraThew/PoE-Dust-Calculator?label=Latest%20Release)](https://github.com/TeeraThew/PoE-Dust-Calculator/releases/latest)
@@ -12,7 +12,7 @@ An AutoHotkey v2 tool for Path of Exile that calculates the Disenchant (Dust) va
 ## 🚀 How to Run
 
 ### Option 1: Standalone Executable (Recommended)
-1. Go to the [Releases](https://github.com/YOUR_USERNAME/PoE-Dust-Calculator/releases) page.
+1. Go to the [Releases](https://github.com/TeeraThew/PoE-Dust-Calculator/releases) page.
 2. Download `dust_calculator.exe`.
 3. Run the `.exe`. You do **not** need to install AutoHotkey.
    * *Note: Antivirus software may flag the .exe as a false positive. This is a common occurrence with compiled AHK scripts. You can always run from source if you prefer.*
@@ -53,4 +53,4 @@ $$
 - Developed with [AutoHotkey v2](https://www.autohotkey.com/).
 
 ## ⚖️ License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE)
