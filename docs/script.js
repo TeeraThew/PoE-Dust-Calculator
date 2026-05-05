@@ -51,7 +51,7 @@ async function loadReadme() {
     readmeEl.classList.remove("loading");
     readmeEl.innerHTML = marked.parse(md);
 
-    // 👉 NEW: render LaTeX
+    // Render LaTeX
     renderMathInElement(readmeEl, {
       delimiters: [
         { left: "$$", right: "$$", display: true },
