@@ -39,7 +39,7 @@ LogMsg(msg) {
 }
 
 ; =========================
-; INIT
+; Initialization
 ; =========================
 InitData()
 DustMap := LoadDustMap(FilePATH)
@@ -98,6 +98,7 @@ F4:: {
     ; Send("^!c") ; Path of Exile Advanced Description (Ctrl+Alt+C)
     Send("^c") ; Path of Exile Advanced Description (Ctrl+C)
 
+    ; Wait for clipboard to contain data (max 1.5 seconds)
     if !ClipWait(1.5) {
         return
     }
@@ -110,7 +111,7 @@ F4:: {
     ItemLevel := 0
     isUnique := false
 
-    ; Improved Name and Data Parsing
+    ; Name and Data Parsing
     for i, line in lines {
         if InStr(line, "Rarity: Unique") {
             isUnique := true
@@ -131,8 +132,9 @@ F4:: {
 
     if !DustMap.Has(ItemName) {
         LogMsg("Item not found in Map: [" ItemName "]")
-        ; Show a small warning so you know it was triggered
+        ; Show a small warning
         ToolTip("Item not in database: " ItemName)
+        ; Auto-clear tooltip after 2 seconds
         SetTimer(() => ToolTip(), 2000)
         return
     }
@@ -160,9 +162,9 @@ F4:: {
     BaseDustTotal := Floor(BaseValue * LevelMultiplier)
     
     ; 2. Define Multipliers
-    ; Quality: 1% = 0.02 multiplier
-    ; Influence: +50% per influence (0.50)
-    ; Corruption: +50% per implicit (0.50)
+    ; Quality: +2% per 1% quality
+    ; Influence: +50% per influence
+    ; Corruption: +50% per implicit
     QualityBonus := ItemQuality * 0.02
     Q20Bonus     := 0.40
     InfBonus := TotalInf * 0.50
@@ -189,6 +191,7 @@ DownloadDustValues(path) {
     try {
         Http := ComObject("WinHttp.WinHttpRequest.5.1")
         Http.Open("GET", URL, true)
+        ; Set a common User-Agent to avoid potential blocking
         Http.SetRequestHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
         Http.Send()
         Http.WaitForResponse()
@@ -198,12 +201,13 @@ DownloadDustValues(path) {
         return false
     }
 
+    ; Create a temporary file to write the new data before replacing the old file
     tempFile := path ".tmp"
     if FileExist(tempFile)
         FileDelete(tempFile)
 
     count := 0
-    ; Specific Regex for the HTML <tr> structure you provided
+    ; Specific Regex for the HTML <tr> structure of the Kingsmarch table
     pos := 1
     while pos := RegExMatch(html, 's)<td><a[^>]*>([^<]+)</a></td><td>([\d\.]+)</td>', &m, pos) {
         itemName := m[1]
@@ -242,6 +246,7 @@ LoadDustMap(path) {
         fileContent := FileRead(path, "UTF-8")
         loop parse fileContent, "`n", "`r" {
             line := Trim(A_LoopField)
+            ; Skip empty lines or invalid lines without a comma
             if (line = "" || !InStr(line, ","))
                 continue
             
@@ -259,7 +264,11 @@ LoadDustMap(path) {
     return dm
 }
 
+; =========================
+; DATA INITIALIZATION
+; =========================
 InitData() {
+    ; Check if file exists and data is up to date
     if !FileExist(FilePATH) || ShouldUpdateData() {
         if !DownloadDustValues(FilePATH) {
             LogMsg("Using existing data (if any) because update failed.")
@@ -294,6 +303,7 @@ FormatNumber(num) {
 ; GUI FUNCTION
 ; =========================
 ShowGui(name, current, q20, gain, lvl, quality, inf, isCorrupt, cCount := 0) {
+    ; Declare the variable as global to ensure it can be accessed and modified across different functions
     global DustGuiObj
     
     ; If a GUI is already open, destroy it first
@@ -364,6 +374,7 @@ ShowGui(name, current, q20, gain, lvl, quality, inf, isCorrupt, cCount := 0) {
     posX := (mx + offset + guiW > A_ScreenWidth) ? (mx - guiW - offset) : (mx + offset)
     posY := (my + offset + guiH > A_ScreenHeight) ? (my - guiH - offset) : (my + offset)
 
+    ; Show the GUI at the calculated position, and make it non-activating so it doesn't steal focus
     DustGuiObj.Show("x" posX " y" posY " NoActivate")
     WinSetTransparent(235, DustGuiObj.Hwnd)
     
