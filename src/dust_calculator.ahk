@@ -21,15 +21,18 @@ global DustGuiObj := 0
 ; Path Setup
 SplitPath(A_ScriptDir, , &PROJECT_ROOT) ; Extracts the parent folder of the script
 DATA_DIR := PROJECT_ROOT "\data"
-LOG_DIR  := PROJECT_ROOT "\logs" ; Optional: Separate logs folder
+LOG_DIR  := PROJECT_ROOT "\logs"
 
 ; Create folders if they don't exist
 if !DirExist(DATA_DIR)
     DirCreate(DATA_DIR)
 
+if !DirExist(LOG_DIR)
+    DirCreate(LOG_DIR)
+
 FilePATH := DATA_DIR "\dust_values.data"
 MetaPATH := DATA_DIR "\dust_meta.ini"
-LogPATH  := DATA_DIR "\dust_log.txt"
+LogPATH  := LOG_DIR "\dust_log.txt"
 
 LogMsg(msg) {
     try FileAppend(FormatTime(A_Now, "yyyy-MM-dd HH:mm:ss") " - " msg "`n", LogPATH, "UTF-8")
