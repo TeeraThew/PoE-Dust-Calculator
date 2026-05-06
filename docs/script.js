@@ -49,7 +49,9 @@ async function loadReadme() {
     const md = await res.text();
 
     readmeEl.classList.remove("loading");
-    readmeEl.innerHTML = marked.parse(md);
+
+    if (typeof marked === "undefined") throw new Error("marked not loaded");
+    readmeEl.innerHTML = DOMPurify.sanitize(marked.parse(md));
 
     // Render LaTeX
     renderMathInElement(readmeEl, {
@@ -70,7 +72,7 @@ async function loadReadme() {
     readmeEl.classList.remove("loading");
     readmeEl.innerHTML = `
       <p>Could not load README.</p>
-      <a href="https://github.com/${REPO}#readme" target="_blank">
+      <a href="https://github.com/${REPO}#readme" target="_blank" rel="noopener noreferrer">
         View on GitHub
       </a>
     `;
